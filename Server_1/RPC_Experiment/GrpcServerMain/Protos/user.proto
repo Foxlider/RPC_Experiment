@@ -11,6 +11,8 @@ service Users {
 
 	rpc GetUser (transactions.UserRequest) returns (User);
 
+	rpc CreateUser (User) returns (User);
+
 	rpc GetUserCards (transactions.UserRequest) returns (cards.CardListResponse);
 }
 

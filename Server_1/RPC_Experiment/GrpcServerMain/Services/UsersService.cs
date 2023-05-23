@@ -38,6 +38,22 @@ namespace GrpcServerMain.Services
             return Task.FromResult(res);
         }
 
+        public override Task<User> CreateUser(User request, ServerCallContext context)
+        {
+            var res = _context.Users.FirstOrDefault(u => u.Id == request.Id);
+
+            if (res != null)
+            { throw new Exception($"User {request.Id} exists"); }
+
+            _context.Users.Add(request);
+            _context.SaveChanges();
+
+
+            res = _context.Users.FirstOrDefault(u => u.Id == request.Id);
+
+            return Task.FromResult(res);
+        }
+
         public override Task<CardListResponse> GetUserCards(UserRequest request, ServerCallContext context)
         {
             var db = _context;
