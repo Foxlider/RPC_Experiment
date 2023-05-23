@@ -61,7 +61,7 @@ Mise en place d'un serveur en Rust et de deux clients en Python et Rust. Le serv
 
 Si on utilise trois ordinateurs connectés au même réseau wifi, on peut lancer le serveur Rust, le client Python et le client Rust sur trois ordinateurs différents. Le client Python et le client Rust peuvent communiquer avec le serveur Rust sur la base d'une simple interaction de type "Hello [Nom du client]".
 
-### Voila par exemple le l'éxécution du client Rust : 
+### Voila par exemple de l'éxécution du client Rust :
 
 ![Exécution du client Rust](https://cdn.discordapp.com/attachments/959542735516352562/1110659994753445918/image.png)
 
