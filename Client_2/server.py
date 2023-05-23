@@ -2,12 +2,13 @@ import grpc
 from concurrent import futures
 import hello_pb2
 import hello_pb2_grpc
+import datetime
 
 
 class Say(hello_pb2_grpc.SayServicer):
 
     def Send(self, request, context):
-        print("Server received: " + request.name)
+        print("Server received: " + request.name + " at " + str(datetime.datetime.now()))
         return hello_pb2.SayResponse(message="Hello, " + request.name)
 
 
