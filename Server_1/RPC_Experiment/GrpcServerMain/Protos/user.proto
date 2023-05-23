@@ -1,15 +1,24 @@
 syntax = "proto3";
 
 option csharp_namespace = "GrpcServerMain";
+import "google/protobuf/empty.proto";
 import "Protos/transaction.proto";
 import "Protos/card.proto";
 package users;
 
 service Users {
+	rpc GetUsers (google.protobuf.Empty) returns (UserListResponse);
+
+	rpc GetUser (transactions.UserRequest) returns (User);
+
 	rpc GetUserCards (transactions.UserRequest) returns (cards.CardListResponse);
 }
 
 message User {
 	int32 id = 1;
 	string name = 2;
+}
+
+message UserListResponse {
+	repeated User users = 1;
 }

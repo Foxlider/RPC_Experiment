@@ -19,7 +19,7 @@ namespace GrpcServerMain.Services
 
         public override Task<CardListResponse> GetAvailableCards(Empty request, ServerCallContext context)
         {
-            var db = new GrpcContext();
+            var db = _context;
 
             CardListResponse res = new();
             res.Cards.AddRange(db.Cards.Where(c=> c.Userid == -1));
