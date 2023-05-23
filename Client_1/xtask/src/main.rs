@@ -36,7 +36,7 @@ fn main() -> Result<()> {
         .ok()
         .and_then(|var| if var.is_empty() { None } else { Some(var) })
         .unwrap_or_else(|| "cargo".to_string());
-    let workspace_root = std::env::var("CARGO_WORKSPACE_DIR").unwrap();
+    let workspace_root: String = std::env::var("CARGO_WORKSPACE_DIR").unwrap();
     color_eyre::install().unwrap();
 
     match Command::parse() {
