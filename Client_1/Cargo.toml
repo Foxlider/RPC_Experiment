@@ -1,0 +1,15 @@
+[workspace]
+members = ["xtask", "bin"]
+default-members = ["bin"]
+
+[workspace.package]
+authors = ["Johan Planchon <johan@planchon.dev>"]
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+license-file = "LICENSE"
+
+[profile.release]
+lto = 'fat'
+opt-level = 's'
+debug-assertions = false
