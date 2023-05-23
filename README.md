@@ -20,9 +20,9 @@ flowchart TB
 
     %% Déclaration
     %% Server
-    RustServer((gRPC Server - Rust\nJulien)):::servers
+    RustServer((gRPC Server - Rust)):::servers
     RustStorage(Storage - RAM):::storages
-    NETServer((gRPC Server - .NET\nAlexis)):::servers
+    NETServer((gRPC Server - .NET)):::servers
     NETStorage(Storage - RAM):::storages
 
     %% Services
@@ -33,8 +33,8 @@ flowchart TB
 
     %% Clients
     Clients[\Clients/]:::clients
-    RustClient[/Rust Client - Johan\]:::clients
-    PythonClient[/Python Client - B4tiste\]:::clients
+    RustClient[/Rust Client\]:::clients
+    PythonClient[/Python Client\]:::clients
 
     %% Relations
     %% Services
