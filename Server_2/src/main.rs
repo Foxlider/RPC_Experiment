@@ -22,7 +22,7 @@ impl Say for HelloService {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Launching gRPC server...");
 
-    let address = "[::1]:8081".parse().unwrap();
+    let address = "0.0.0.0:50051".parse().unwrap();
     let hello_service = HelloService::default();
 
     Server::builder()
