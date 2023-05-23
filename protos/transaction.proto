@@ -1,17 +1,28 @@
 syntax = "proto3";
 
 option csharp_namespace = "GrpcServerMain";
-
+import "Protos/card.proto";
 package transactions;
 
 service Transactions {
 	rpc GetUserTransactions (UserRequest) returns (TransactionListResponse);
+
+	rpc BuyCard (TransactionRequest) returns (cards.Card);
+
+	rpc SellCard (TransactionRequest) returns (cards.Card);
 }
 
 message Transaction{
 	int32 id = 1;
-	int32 user_id = 2;
-	int32 card_id = 3;
+	TransactionType type = 2;
+	int32 user_id = 3;
+	int32 card_id = 4;
+}
+
+message TransactionRequest
+{
+	int32 userid = 1;
+	int32 cardid = 2;
 }
 
 message UserRequest{
@@ -19,5 +30,11 @@ message UserRequest{
 }
 
 message TransactionListResponse{
-	repeated Transaction id = 1;
+	repeated Transaction transactions = 1;
+}
+
+enum TransactionType {
+	TRANSACTION_TYPE_None = 0;
+	TRANSACTION_TYPE_BUY = 1;
+	TRANSACTION_TYPE_SELL = 2;
 }

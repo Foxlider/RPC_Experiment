@@ -7,17 +7,16 @@ package cards;
 service Cards {
 	rpc GetAvailableCards (google.protobuf.Empty) returns (CardListResponse);
 
-	rpc BuyCard (CardRequest) returns (Card);
-
-	rpc SellCard (CardRequest) returns (Card);
+	rpc GetCard(CardRequest) returns (Card);
 }
 
 message Card{
 	int32 id = 1;
-	string name = 2;
-	int32 health_points = 3;
-	int32 attack = 4;
-	int32 defense = 5;
+	int32 userid = 2;
+	string name = 3;
+	int32 health_points = 4;
+	int32 attack = 5;
+	int32 defense = 6;
 }
 
 message CardListResponse{

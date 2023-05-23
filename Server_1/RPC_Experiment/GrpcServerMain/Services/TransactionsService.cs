@@ -17,7 +17,7 @@ namespace GrpcServerMain.Services
 
         public override Task<TransactionListResponse> GetUserTransactions(UserRequest request, ServerCallContext context)
         {
-            var db = new GrpcContext();
+            var db = _context;
 
             TransactionListResponse res = new();
             res.Transactions.AddRange(db.Transactions.Where(t => t.UserId == request.Id));
@@ -28,17 +28,22 @@ namespace GrpcServerMain.Services
 
         public override Task<Card> BuyCard(TransactionRequest request, ServerCallContext context)
         {
-            var db = new GrpcContext();
+            var db = _context;
 
             var card = db.Cards.FirstOrDefault(c => c.Id == request.Cardid);
 
             if (card == null)
                 throw new Exception($"Card {request.Cardid} not found");
 
+            if (card.Userid == request.Userid)
+                throw new Exception($"Card is already owned");
+
+            int i = db.Transactions.Count()+1;
+
             db.Transactions.Add(new Transaction() { 
                 CardId = request.Cardid, 
                 UserId = request.Userid, 
-                Id = db.Transactions.Count(),
+                Id = i,
                 Type = TransactionType.Buy
             });
 
@@ -53,19 +58,23 @@ namespace GrpcServerMain.Services
         public override Task<Card> SellCard(TransactionRequest request, ServerCallContext context)
         {
 
-            var db = new GrpcContext();
+            var db = _context;
 
             var card = db.Cards.FirstOrDefault(c => c.Id == request.Cardid);
 
             if (card == null)
                 throw new Exception($"Card {request.Cardid} not found");
+            int i = db.Transactions.Count()+1;
 
-            db.Transactions.Add(new Transaction() { 
-                CardId = request.Cardid, 
-                UserId = request.Userid, 
-                Id = db.Transactions.Count(),
+            var t = new Transaction()
+            {
+                CardId = request.Cardid,
+                UserId = request.Userid,
+                Id = i,
                 Type = TransactionType.Sell
-            });
+            };
+
+            db.Transactions.Add(t);
 
             card.Userid = -1;
 

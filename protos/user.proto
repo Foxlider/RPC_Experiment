@@ -1,19 +1,15 @@
 syntax = "proto3";
 
 option csharp_namespace = "GrpcServerMain";
-
+import "Protos/transaction.proto";
+import "Protos/card.proto";
 package users;
 
 service Users {
-	rpc Create (User) returns (User);
-	rpc Get (UserRequest) returns (User);
+	rpc GetUserCards (transactions.UserRequest) returns (cards.CardListResponse);
 }
 
 message User {
 	int32 id = 1;
 	string name = 2;
-}
-
-message UserRequest {
-	int32  id = 1;
 }
