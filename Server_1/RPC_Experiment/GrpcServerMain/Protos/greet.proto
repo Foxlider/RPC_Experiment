@@ -7,15 +7,56 @@ package greet;
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc Handshake (Ping) returns (Pong);
+
+  // Sends the liste of available cards to buy
+  rpc GetAvailableCards (Empty) returns (CardListResponse);
+
+  rpc GetUserTransactions (UserRequest) returns (TransactionListResponse);
+
+  rpc BuyCard (CardRequest) returns (CardResponse);
+
+
+  rpc SellCard (CardRequest) returns (CardResponse);
+
+
 }
 
 // The request message containing the user's name.
-message HelloRequest {
+message Ping {
   string name = 1;
 }
 
 // The response message containing the greetings.
-message HelloReply {
+message Pong {
   string message = 1;
+}
+
+message Empty {
+}
+
+
+message CardListResponse{
+	repeated string id = 1;
+}
+
+message CardRequest{
+	int32	cardid	= 1;
+}
+
+message CardResponse{
+	int32	cardid	= 1;
+	string	name	= 2;
+	int32	p		= 3;
+	int32	dmg		= 4;
+	int32	str		= 5;
+	int32	def		= 6;
+}
+
+message UserRequest{
+	int32	userid	= 1;
+}
+
+message TransactionListResponse{
+	repeated string id = 1;
 }
