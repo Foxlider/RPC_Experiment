@@ -10,13 +10,13 @@
 ```mermaid
 flowchart TB
     %%classDef clients fill:#b5b2f7;
-    classDef clients color:#ffffff,stroke:#b5b2f7,stroke-width:2px;
+    classDef clients color:#a0a0a0,stroke:#b5b2f7,stroke-width:2px;
     %% classDef servers fill:#f7b2b2;
-    classDef servers color:#ffffff,stroke:#f7b2b2,stroke-width:2px;
+    classDef servers color:#a0a0a0,stroke:#f7b2b2,stroke-width:2px;
     %% classDef services fill:#b2f7ce;
-    classDef services color:#ffffff,stroke:#b2f7ce,stroke-width:2px;
+    classDef services color:#a0a0a0,stroke:#b2f7ce,stroke-width:2px;
     %% classDef storages fill:#f7e9b2;
-    classDef storages color:#ffffff,stroke:#f7e9b2,stroke-width:2px;
+    classDef storages color:#a0a0a0,stroke:#f7e9b2,stroke-width:2px;
 
     %% Déclaration
     %% Server
