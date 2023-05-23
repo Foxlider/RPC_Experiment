@@ -1,6 +1,6 @@
 use clap::Parser;
 use cli::{Commands, UsersCommand};
-use client_1::{user::UserClient, hello::HelloClient};
+use client_1::{hello::HelloClient, user::UserClient};
 
 mod cli;
 
@@ -11,12 +11,12 @@ async fn main() -> eyre::Result<()> {
 
     match app.command {
         Commands::Users(command) => match command {
-            UsersCommand::Create => {
+            UsersCommand::Create { id, name } => {
                 let mut user_client = UserClient::new(&app.users_host).await?;
-                user_client.create_user(1312, "Rageux").await?;
+                user_client.create_user(id, name).await?;
             }
             #[allow(clippy::unimplemented)]
-            _ => unimplemented!()
+            _ => unimplemented!(),
         },
         Commands::Say { content } => {
             let mut hello_client: HelloClient = HelloClient::new(&app.hello_host).await?;

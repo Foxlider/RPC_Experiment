@@ -3,10 +3,7 @@ use clap::Parser;
 #[derive(Debug, Parser)]
 #[clap(author, version, about, long_about = None)]
 #[clap(propagate_version = true)]
-#[clap(
-    subcommand_required = true,
-    arg_required_else_help = true
-)]
+#[clap(subcommand_required = true, arg_required_else_help = true)]
 pub struct App {
     #[arg(long)]
     #[clap(env = "GRPC_USER_HOST", default_value = "http://0.0.0.0:50051")]
@@ -36,7 +33,12 @@ pub enum UsersCommand {
     /// Get a remote users
     Get,
     /// Create a users
-    Create,
+    Create {
+        #[arg(short = 'i', long)]
+        id: i32,
+        #[arg(short = 'n', long)]
+        name: String,
+    },
     /// List the remote users
-    List
+    List,
 }
