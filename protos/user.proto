@@ -5,10 +5,15 @@ option csharp_namespace = "GrpcServerMain";
 package users;
 
 service Users {
-
+	rpc Create (User) returns (User);
+	rpc Get (UserRequest) returns (User);
 }
 
 message User {
 	int32 id = 1;
 	string name = 2;
+}
+
+message UserRequest {
+	int32  id = 1;
 }
