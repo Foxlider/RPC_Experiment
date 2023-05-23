@@ -5,7 +5,7 @@
 - Batiste LALOI ([Client_2](./Client_2/README.md))
 - Alexis LONCHAMBON ([Server_1](./Server_1/README.md))
 
-## Schéma de l'architecture
+## Première approche théorique de conception de l'architecture logicielle
 
 ```mermaid
 flowchart TB
