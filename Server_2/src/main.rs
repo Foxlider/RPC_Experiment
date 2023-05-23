@@ -11,7 +11,7 @@ pub struct HelloService {}
 
 #[tonic::async_trait]
 impl Say for HelloService {
-    async fn send(&self,request:Request<SayRequest>) -> Result<Response<SayResponse>,Status>{
+    async fn send(&self,request:Request<SayRequest>) -> Result<Response<SayResponse>,Status> {
         Ok(Response::new(SayResponse{
             message:format!("hello {}", request.get_ref().name),
         }))
