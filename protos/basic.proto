@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServerMain";
+import "google/protobuf/empty.proto";
+
+package basic;
+
+service Basic {
+	rpc Handshake (google.protobuf.Empty) returns (Pong);
+}
+
+message Pong {
+  string message = 1;
+}

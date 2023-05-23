@@ -2,14 +2,11 @@ syntax = "proto3";
 
 option csharp_namespace = "GrpcServerMain";
 
-package user;
+package users;
 
-// The greeting service definition.
 service Users {
 
 }
-
-message Empty {}
 
 message User {
 	int32 id = 1;
