@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcServerMain";
+import "google/protobuf/empty.proto";
+package cards;
+
+service Cards {
+	rpc GetAvailableCards (google.protobuf.Empty) returns (CardListResponse);
+
+	rpc GetCard(CardRequest) returns (Card);
+}
+
+message Card{
+	int32 id = 1;
+	int32 userid = 2;
+	string name = 3;
+	int32 health_points = 4;
+	int32 attack = 5;
+	int32 defense = 6;
+}
+
+message CardListResponse{
+	repeated Card cards = 1;
+}
+
+message CardRequest{
+	int32 id = 1;
+}
